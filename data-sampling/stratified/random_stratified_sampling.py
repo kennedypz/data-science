@@ -3,16 +3,16 @@ import pandas
 values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 group = ["A", "A", "A", "A", "B", "B", "C", "C", "C", "D", "D", "D"]
 
-dataFrame = pandas.DataFrame({'group': group, 'values': values})
+data_frame = pandas.DataFrame({'group': group, 'values': values})
 
 # gets n samples from the stratum (group).
-# for example, if called like this: stratifiedSample(dataFrame, 1, "group")
+# for example, if called like this: stratifiedSample(data_frame, 1, "group")
 # the output will be one random value from each group.
 
 
-def stratifiedSampleByStatumSamples(dataFrame, n, stratum):
+def stratifiedSampleByStatumSamples(data_frame, n, stratum):
     # the x in the lambda function represents the stratum
-    sample = dataFrame.groupby(stratum, group_keys=False).apply(
+    sample = data_frame.groupby(stratum, group_keys=False).apply(
         lambda x: x.sample(min(len(x), n)))
     return sample
 
@@ -20,7 +20,7 @@ def stratifiedSampleByStatumSamples(dataFrame, n, stratum):
 # one value representing the group.
 
 
-# print(stratifiedSampleByStatumSamples(dataFrame, 2, 'group'))
+# print(stratifiedSampleByStatumSamples(data_frame, 2, 'group'))
 
 
 # the result of len(x)/populationSize inside the lambda function is
@@ -38,15 +38,15 @@ def stratifiedSampleByStatumSamples(dataFrame, n, stratum):
 # I should get 30% out of 10, which is 3, meaning that I should get 3 values
 # from group "A".
 
-# the reset_index formats the dataFrame.
+# the reset_index formats the data_frame.
 
 # sort_values sorts the data frame by stratum.
-def stratifiedSampleByFinalSampleSize(dataframe, N, stratum):
-    populationSize = dataFrame.shape[0]
+def stratifiedSampleByFinalSampleSize(data_frame, N, stratum):
+    populationSize = data_frame.shape[0]
 
-    sample = dataFrame.groupby(stratum, group_keys=False).apply(lambda x: x.sample(
+    sample = data_frame.groupby(stratum, group_keys=False).apply(lambda x: x.sample(
         int(N*len(x)/populationSize))).reset_index(drop=True).sort_values(by=stratum)
     return sample
 
 
-print(stratifiedSampleByFinalSampleSize(dataFrame, 9, 'group'))
+print(stratifiedSampleByFinalSampleSize(data_frame, 9, 'group'))
