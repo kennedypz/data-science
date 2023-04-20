@@ -4,9 +4,9 @@ from random import sample
 values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 group = ["A", "A", "A", "A", "B", "B", "C", "C", "C", "D", "D", "D"]
 
-dataFrame = pandas.DataFrame({'group': group, 'values': values})
+data_frame = pandas.DataFrame({'group': group, 'values': values})
 
-# dataFrame[cluster].unique() gets the clusters (groups)
+# data_frame[cluster].unique() gets the clusters (groups)
 # Ex.: "A", "B", "C", "D"
 
 # len(allClusters) gets how many clusters I have
@@ -19,14 +19,14 @@ dataFrame = pandas.DataFrame({'group': group, 'values': values})
 # or "A" and "D", and so on.
 
 
-def clusteredSample(dataFrame, clusterQuantity, cluster):
-    allClusters = list(dataFrame[cluster].unique())
+def clusteredSample(data_frame, clusterQuantity, cluster):
+    allClusters = list(data_frame[cluster].unique())
     clustersSize = len(allClusters)
     n = min(clusterQuantity, clustersSize)
     selectedClusters = sample(allClusters, n)
 
-    clusteredSample = dataFrame[dataFrame[cluster].isin(selectedClusters)]
+    clusteredSample = data_frame[data_frame[cluster].isin(selectedClusters)]
     return clusteredSample
 
 
-print(clusteredSample(dataFrame, 2, 'group'))
+print(clusteredSample(data_frame, 2, 'group'))

@@ -7,13 +7,13 @@ population = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 # one unamed which represents the lines/index and other called "values"
 # which was defined by me in the creation of the data frame and represents
 # the values of the population list
-dataFrame = pandas.DataFrame(population, columns=["values"])
+data_frame = pandas.DataFrame(population, columns=["values"])
 
 
 # gets a sample based on size (4 in this case)
-print(dataFrame.sample(n=4))
+print(data_frame.sample(n=4))
 
 print("\n")
 
 # gets a sample based on percentage/proportion (0.33 in this case)
-print(dataFrame.sample(frac=0.33))
+print(data_frame.sample(frac=0.33))
