@@ -1,7 +1,7 @@
 import pandas
 
 data_frame = pandas.read_csv(
-    'measures_of_central_tendency/data/BigmacPriceJuly2022.csv')
+    'data/BigmacPriceJuly2022.csv')
 
 # return the mean (média) of prices
 mean = data_frame['dollar_price'].mean()

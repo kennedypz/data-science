@@ -16,4 +16,4 @@ data_frame_filtered.groupby('name').count()['date']
 
 # creates a new .csv file from the filtered data frame that we're gonna use later
 data_frame_filtered.to_csv(
-    'measures_of_central_tendency/data/BigmacPriceJuly2022.csv', index=False)
+    'data/BigmacPriceJuly2022.csv', index=False)

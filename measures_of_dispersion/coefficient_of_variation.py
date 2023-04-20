@@ -1,7 +1,7 @@
 import pandas
 
 data_frame = pandas.read_csv(
-    'measures_of_central_tendency/data/BigmacPriceJuly2022.csv')
+    'data/BigmacPriceJuly2022.csv')
 
 # gets the coefficient of variation of the big mac price
 # the formula is: 100 * standard deviation * mean
